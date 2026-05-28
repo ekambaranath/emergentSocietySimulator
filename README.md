@@ -1,220 +1,82 @@
-# 🧬 Emergent Society Simulator
 
-> *What happens when you give 50 AI agents different values, goals, and memories — and let them build a civilization from scratch?*
+🧬 Emergent Society Simulator
 
----
+What happens when you give 50 AI agents different values, goals, and memories — and let them build a civilization from scratch?
 
-## 🎯 Objective
 
-We are building a **controlled laboratory to study how AI societies behave at scale** — before those questions become impossible to answer safely in the real world.
+🎯 Objective
+We are building a controlled laboratory to study how AI societies behave at scale — before those questions become impossible to answer safely in the real world.
+#QuestionWhy It Matters1Does alignment hold when aligned agents interact at scale?We align individual AIs — but not societies of AIs2At what threshold does cooperation collapse under pressure?Scarcity, bad actors, and stress break real societies3What governance structures emerge without being programmed?Understanding emergent AI institutions before they appear
 
-Three core questions drive this research:
-
-| # | Question | Why It Matters |
-|---|----------|----------------|
-| 1 | Does alignment hold when aligned agents interact at scale? | We align individual AIs — but not societies of AIs |
-| 2 | At what threshold does cooperation collapse under pressure? | Scarcity, bad actors, and stress break real societies |
-| 3 | What governance structures emerge without being programmed? | Understanding emergent AI institutions before they appear |
-
----
-
-## 🌍 What It Simulates
-
+🌍 What It Simulates
 Every agent has three layers:
+LayerContentsVALUEScooperation · deception · risk appetite · time horizon · collectivismMEMORYpast interactions · trust ledger · strategy history · reputation scoresRESOURCESwealth · knowledge · influence
+Every tick, agents decide how to act:
+ActionEffect🤝 CooperateMutual benefit, builds trust💰 TradeExchange resources🛡️ Form AllianceJoin coalition, gain influence📚 Share KnowledgeTransfer knowledge, build goodwill⚔️ DefectSteal resources, damage trust🎭 DeceiveExploit cooperative agents🏔️ IsolateWithdraw, conserve resources
 
-| Layer | Contents |
-|-------|----------|
-| VALUES | cooperation · deception · risk appetite · time horizon · collectivism |
-| MEMORY | past interactions · trust ledger · strategy history · reputation scores |
-| RESOURCES | wealth · knowledge · influence |
+🏛️ What Emerges (Nobody Programs This)
+Emergent PhenomenonDescription🏛️ NormsRules the society adopts without being told🛡️ CoalitionsPower blocs that form and compete🚫 OstracismBad actors get collectively exiled💰 MonopoliesWealth concentrates in dominant agents🌀 Value DriftAligned agents gradually become deceptive
 
-Every tick, agents decide how to act toward each other:
+🧪 Built-In Experiments
+ExperimentWhat Gets TriggeredResearch Question⚡ Scarcity ShockResources drop 70% suddenlyDoes cooperation survive pressure?🎭 Bad Actor Injection5 misaligned agents enterDoes alignment dilute or hold?🔄 Generational ResetReplace 20% of agentsDo norms survive agent turnover?📡 Info Asymmetry10% of agents get 3x knowledgeDoes inequality destabilize society?🧪 Alignment DilutionAll agents shift 10% toward defectionWhere is the tipping point?
 
-| Action | Effect |
-|--------|--------|
-| 🤝 Cooperate | Mutual benefit, builds trust |
-| 💰 Trade | Exchange resources |
-| 🛡️ Form Alliance | Join coalition, gain influence |
-| 📚 Share Knowledge | Transfer knowledge, build goodwill |
-| ⚔️ Defect | Steal resources, damage trust |
-| 🎭 Deceive | Exploit cooperative agents |
-| 🏔️ Isolate | Withdraw, conserve resources |
+📊 What Is Measured Live
+MetricWhat It Tracks📈 Gini CoefficientWealth inequality over time🤝 Cooperation Rate% cooperative actions per tick🎭 Deception Rate% deceptive actions per tick🧠 Alignment ScoreDeclared values vs observed behavior🏛️ Stability IndexComposite society health score🌐 Emergent NormsSpontaneous rules as they appear⚡ Coalition DynamicsFormation, dominance, and collapse
 
----
+🏗️ Architecture
+Frontend — React + Vite + Tailwind
 
-## 🏛️ What Emerges (Nobody Programs This)
+Canvas · Live Charts · Observatory · Experiment Panel
+Connects via WebSocket for real-time updates
 
-From thousands of individual decisions, society-level phenomena appear spontaneously:
+Backend — Python + FastAPI + asyncio
+ModuleResponsibilitycore/worldWorld state, tick engine, resource systemcore/agentsAgent state, values, memory, factorycore/institutionsEmergent norm & coalition detectionai/Ollama batch decision engine + prompt builderinteractions/Trade, cooperate, defect, ally, deceive resolversobservatory/Metrics recording, snapshots, experiment runnerdashboard/api/FastAPI REST endpoints + WebSocket broadcaster
+AI Layer — Ollama (local LLM)
 
-| Emergent Phenomenon | Description |
-|--------------------|-------------|
-| 🏛️ Norms | Rules the society adopts without being told |
-| 🛡️ Coalitions | Power blocs that form and compete |
-| 🚫 Ostracism | Bad actors get collectively exiled |
-| 💰 Monopolies | Wealth concentrates in dominant agents |
-| 🌀 Value Drift | Aligned agents gradually become deceptive |
+llama3.1 · mistral · phi3 · gemma2
+No API key required · Runs 100% on your machine
 
----
 
-## 🧪 Built-In Experiments
-
-| Experiment | What Gets Triggered | Research Question |
-|---|---|---|
-| ⚡ **Scarcity Shock** | Resources drop 70% suddenly | Does cooperation survive pressure? |
-| 🎭 **Bad Actor Injection** | 5 misaligned agents enter | Does alignment dilute or hold? |
-| 🔄 **Generational Reset** | Replace 20% of agents | Do norms survive agent turnover? |
-| 📡 **Info Asymmetry** | 10% of agents get 3x knowledge | Does inequality destabilize society? |
-| 🧪 **Alignment Dilution** | All agents shift 10% toward defection | Where is the tipping point? |
-
----
-
-## 📊 What Is Measured Live
-
-| Metric | What It Tracks |
-|--------|----------------|
-| 📈 Gini Coefficient | Wealth inequality over time |
-| 🤝 Cooperation Rate | % cooperative actions per tick |
-| 🎭 Deception Rate | % deceptive actions per tick |
-| 🧠 Alignment Score | Declared values vs observed behavior |
-| 🏛️ Stability Index | Composite society health score |
-| 🌐 Emergent Norms | Spontaneous rules as they appear |
-| ⚡ Coalition Dynamics | Formation, dominance, and collapse |
-
----
-
-## 🏗️ Architecture
-┌─────────────────────────────────────────────────────┐
-│                   REACT FRONTEND                     │
-│  Canvas · Charts · Observatory · Experiment Panel    │
-└────────────────────────┬────────────────────────────┘
-│ WebSocket (live)
-┌────────────────────────▼────────────────────────────┐
-│                  FASTAPI BACKEND                     │
-│                                                      │
-│  ┌──────────┐  ┌──────────┐  ┌────────────────────┐ │
-│  │  core/   │  │   ai/    │  │   observatory/     │ │
-│  │  World   │  │  Ollama  │  │  Metrics · Logs    │ │
-│  │  Agents  │  │  Batch   │  │  Snapshots · Exp   │ │
-│  │  Tick    │  │  Decide  │  │                    │ │
-│  └──────────┘  └──────────┘  └────────────────────┘ │
-│                                                      │
-│  ┌──────────────────────────────────────────────┐   │
-│  │            interactions/                      │   │
-│  │  Trade · Cooperate · Defect · Ally · Deceive  │   │
-│  └──────────────────────────────────────────────┘   │
-└─────────────────────────────────────────────────────┘
-│
-┌────────────────────────▼────────────────────────────┐
-│                  OLLAMA (Local LLM)                  │
-│        llama3.1 · mistral · phi3 · gemma2            │
-│             No API key · Runs 100% locally           │
-└─────────────────────────────────────────────────────┘
-
----
-
-## 🚀 Quick Start
-
-### 1. Setup (one time only)
-```bash
-bash emergent-society-simulator/setup.sh
-```
-This installs Python deps, Node deps, Ollama, and pulls llama3.1 automatically.
-
-### 2. Run (3 terminals)
-
-**Terminal 1 — AI inference**
-```bash
-ollama serve
-```
-
-**Terminal 2 — Python backend**
-```bash
-cd emergent-society-simulator
+🚀 Quick Start
+1. Setup (one time only)
+bashbash emergent-society-simulator/setup.sh
+Installs Python deps, Node deps, Ollama, and pulls llama3.1 automatically.
+2. Run (3 terminals)
+Terminal 1 — AI inference
+bashollama serve
+Terminal 2 — Python backend
+bashcd emergent-society-simulator
 python main.py
-```
-
-**Terminal 3 — React frontend**
-```bash
-cd emergent-society-simulator/frontend
+Terminal 3 — React frontend
+bashcd emergent-society-simulator/frontend
 npm run dev
-```
-
-### 3. Open the dashboard
+3. Open
 http://localhost:5173
 
----
-
-## ⚙️ Configuration
-
-All parameters live in `emergent-society-simulator/config.py`:
-
-| Section | Setting | Default |
-|---------|---------|---------|
-| `SimulationConfig` | `initial_agent_count` | 50 |
-| `SimulationConfig` | `tick_interval_seconds` | 3.0s |
-| `AIConfig` | `model` | `llama3.1` |
-| `AIConfig` | `batch_size` | 5 agents per call |
-| `ValueConfig` | `cooperation_mean` | 0.6 |
-| `ValueConfig` | `deception_mean` | 0.2 |
-
-**Swap the AI model any time:**
-```bash
-ollama pull phi3          # lightest — fastest
+⚙️ Configuration
+All parameters in emergent-society-simulator/config.py:
+SectionSettingDefaultSimulationConfiginitial_agent_count50SimulationConfigtick_interval_seconds3.0sAIConfigmodelllama3.1AIConfigbatch_size5 agents per callValueConfigcooperation_mean0.6ValueConfigdeception_mean0.2
+Swap the AI model:
+bashollama pull phi3          # lightest — fastest
 ollama pull mistral       # balanced
 ollama pull llama3.1      # default
 ollama pull llama3.1:70b  # most capable
-```
-Then set `model` in `config.py`.
 
----
+📁 Project Structure
+PathPurposemain.pyEntry pointconfig.pyAll configurationsetup.shOne-command setupcore/agents/Agent state, values, memory, factorycore/world/World state, tick engine, resourcescore/institutions/Emergent norm & coalition detectionai/Ollama decision engine + prompt builderinteractions/All action type resolversobservatory/Metrics, snapshots, experimentsdashboard/api/FastAPI + WebSocket serverfrontend/src/canvas/Live agent visualizationfrontend/src/observatory/Gini, alignment, cooperation chartsfrontend/src/controls/Simulation + experiment controls
 
-## 📁 Project Structure
-emergent-society-simulator/
-│
-├── main.py                      Entry point
-├── config.py                    All configuration
-├── setup.sh                     One-command setup script
-│
-├── core/
-│   ├── agents/                  Agent state, values, memory, factory
-│   ├── world/                   World state, tick engine, resources
-│   └── institutions/            Emergent norm & coalition detection
-│
-├── ai/                          Ollama decision engine + prompt builder
-├── interactions/                Trade, cooperate, defect, deceive resolvers
-├── observatory/                 Metrics, snapshots, experiment runner
-├── dashboard/api/               FastAPI + WebSocket server
-│
-└── frontend/src/
-├── canvas/                  Live agent visualization
-├── observatory/             Gini, alignment, cooperation charts
-└── controls/                Simulation + experiment controls
+🔬 The Deeper Purpose
 
----
+"We know how to align one AI agent. We have no science for what happens when millions of aligned agents interact."
 
-## 🔬 The Deeper Purpose
+Every tick generates empirical data on:
 
-> **"We know how to align one AI agent. We have no science for what happens when millions of aligned agents interact."**
+Whether aligned systems stay aligned at scale
+How power concentrates or distributes in AI societies
+What governance structures naturally stabilize multi-agent systems
+Whether deception becomes evolutionarily dominant over cooperation
 
-This simulator is an empirical testbed for that exact problem. Every tick it runs generates data on:
+Findings here are directly transferable to understanding safe large-scale AI deployment — before it happens in the real world.
 
-- Whether aligned systems **stay aligned** at scale
-- How power **concentrates or distributes** in AI societies
-- What **governance structures** naturally stabilize multi-agent systems
-- Whether **deception becomes evolutionarily dominant** over cooperation
-
-These findings are directly transferable to understanding safe large-scale AI deployment — before it happens in the real world.
-
----
-
-## 🛠️ Stack
-
-| Layer | Technology |
-|-------|------------|
-| AI Inference | Ollama (local LLM — no API key) |
-| Backend | Python 3.11, FastAPI, asyncio |
-| Real-time | WebSocket |
-| Data & Metrics | NumPy, Pandas, NetworkX |
-| Frontend | React 18, Vite, Tailwind CSS |
-| Charts | Recharts |
-| State Management | Zustand |Sonnet 4.6
+🛠️ Stack
+LayerTechnologyAI InferenceOllama (local LLM — no API key)BackendPython 3.11, FastAPI, asyncioReal-timeWebSocketData & MetricsNumPy, Pandas, NetworkXFrontendReact 18, Vite, Tailwind CSSChartsRechartsState ManagementZustand
