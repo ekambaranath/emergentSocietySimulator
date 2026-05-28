@@ -1,0 +1,37 @@
+{
+  "name": "Emergent Society Simulator",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": { "version": "20" }
+  },
+
+  "forwardPorts": [8000, 5173, 11434],
+  "portsAttributes": {
+    "8000":  { "label": "FastAPI Backend", "onAutoForward": "notify" },
+    "5173":  { "label": "React Frontend",  "onAutoForward": "openBrowser" },
+    "11434": { "label": "Ollama",          "onAutoForward": "silent" }
+  },
+
+  "postCreateCommand": "bash setup.sh",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "bradlc.vscode-tailwindcss",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "editor.formatOnSave": true
+      }
+    }
+  },
+
+  "remoteEnv": {
+    "OLLAMA_HOST": "http://localhost:11434"
+  }
+}

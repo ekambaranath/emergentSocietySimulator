@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.env
+
+# Node
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+
+# Data
+data/logs/
+data/snapshots/
+data/results/
+
+# OS
+.DS_Store
+*.zip
